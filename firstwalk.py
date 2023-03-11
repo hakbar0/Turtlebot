@@ -16,8 +16,9 @@ def publisher():
     # Create a Twist message object with a desired velocity
     desired_velocity = Twist()
     desired_velocity.linear.x = 0.2 # Forward with 0.2 m/sec.
+    desired_velocity.angular.z = 0.5 # rotate with 0.5 m/s
 
-    # Move forward for 3 seconds (30 iterations at 10Hz)
+    # Move forward for 3 seconds (30 iterations at 10Hz) and rotate
     for i in range (30):
         pub.publish(desired_velocity)
         rate.sleep()
