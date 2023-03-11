@@ -2,6 +2,7 @@
 
 import rospy
 from geometry_msgs.msg import Twist
+import os
 
 def publisher():
     # Create a publisher object that publishes Twist messages to the 'cmd_vel' topic
@@ -17,6 +18,10 @@ def publisher():
     desired_velocity = Twist()
     desired_velocity.linear.x = 0.2 # Forward with 0.2 m/sec.
     desired_velocity.angular.z = 0.5 # rotate with 0.5 m/s
+
+    # Launch image_view node to view robot's camera feed
+    # & character at the end of the command tells the terminal to run the command in the background,
+    os.system('rosrun image_view image_view image:=/camera/rgb/image_raw &')
 
     # Move forward for 3 seconds (30 iterations at 10Hz) and rotate
     for i in range (30):
