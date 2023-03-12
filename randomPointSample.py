@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Sample 3 points from
-# uniform dist. between 0 and 10
-s = np.random.uniform(0, 10, 10)
+# uniform dist. between 0 and x
+s = np.random.uniform(0, 10, 50)
 
 # Visualise
 plt.plot(s,np.zeros(len(s)),'ro')
