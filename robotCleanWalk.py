@@ -3,6 +3,7 @@
 import rospy as ros
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
+import os
 
 class Forward:
     def __init__(self):
@@ -12,6 +13,10 @@ class Forward:
         self.pub = ros.Publisher('/cmd_vel', Twist, queue_size=10)
         self.sub = ros.Subscriber('/odom', Odometry, self.subscribe, queue_size=10)
         self.robot = Twist()
+        
+        # Launch image_view node to view robot's camera feed
+        # & character at the end of the command tells the terminal to run the command in the background,
+        os.system('rosrun image_view image_view image:=/camera/rgb/image_raw &')
 
         # Keep the node running
         ros.spin()
